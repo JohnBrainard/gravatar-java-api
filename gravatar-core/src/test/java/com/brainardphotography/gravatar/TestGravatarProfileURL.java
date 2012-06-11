@@ -38,10 +38,22 @@ public class TestGravatarProfileURL {
 	}
 
 	@Test
+	public void testFormatURLWithSizeParameter() {
+		final String hash = getEmailHash("test@test.com");
+		final String expected = "http://www.gravatar.com/" + hash + ".qr?s=200";
+
+		GravatarProfileURL gravatarURL = new GravatarProfileURL("test@test.com");
+		gravatarURL.setSize(200);
+		
+		String toString = gravatarURL.toString(GravatarProfileFormat.QR_CODE);
+		assertEquals(expected, toString);
+	}
+
+	@Test
 	public void testGetProfileText() throws IOException {
 		GravatarProfileURL gravatarURL = new GravatarProfileURL("jfbrainard@gmail.com");
 		String url = gravatarURL.toString(GravatarProfileFormat.DEFAULT);
-		String toString = gravatarURL.getAsText(GravatarProfileFormat.DEFAULT);
+		String toString = gravatarURL.getText(GravatarProfileFormat.DEFAULT);
 
 		assertNotNull(toString);
 
@@ -53,7 +65,7 @@ public class TestGravatarProfileURL {
 	public void testGetProfileJSON() throws IOException {
 		GravatarProfileURL gravatarURL = new GravatarProfileURL("jfbrainard@gmail.com");
 		String url = gravatarURL.toString(GravatarProfileFormat.JSON);
-		String toString = gravatarURL.getAsText(GravatarProfileFormat.JSON);
+		String toString = gravatarURL.getText(GravatarProfileFormat.JSON);
 
 		assertNotNull(toString);
 
@@ -65,8 +77,22 @@ public class TestGravatarProfileURL {
 	public void testGetProfileQRCodeAsText() throws IOException {
 		GravatarProfileURL gravatarURL = new GravatarProfileURL("jfbrainard@gmail.com");
 		String url = gravatarURL.toString(GravatarProfileFormat.QR_CODE);
-		String toString = gravatarURL.getAsText(GravatarProfileFormat.QR_CODE);
+		String toString = gravatarURL.getText(GravatarProfileFormat.QR_CODE);
 
 		assertNull(toString);
+	}
+	
+	@Test
+	public void testGetProfileQRCodeAsBytes() throws IOException {
+		GravatarProfileURL gravatarURL = new GravatarProfileURL("jfbrainard@gmail.com");
+		gravatarURL.setSize(200);
+		String url = gravatarURL.toString(GravatarProfileFormat.QR_CODE);
+		byte[] data = gravatarURL.getBytes(GravatarProfileFormat.QR_CODE);
+
+		assertNotNull(data);
+		assertTrue(data.length > 0);
+		
+		logger.log(Level.INFO, "testGetProfileQRCodeAsBytes: " + url);
+		logger.log(Level.INFO, "testGetProfileQRCodeAsBytes: " + data.length);
 	}
 }

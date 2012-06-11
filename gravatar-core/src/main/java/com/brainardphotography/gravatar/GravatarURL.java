@@ -107,18 +107,20 @@ public abstract class GravatarURL {
 	 */
 	@Override
 	public String toString() {
+		return Joiner.on("?").skipNulls().join(new String[] {
+				getBaseURL(),
+				getQueryString()
+		});
+	}
+
+	protected String getBaseURL() {
 		String formatString = secure ?
 				"https://secure.gravatar.com/%s%s" :
 				"http://www.gravatar.com/%s%s";
 
-		String url = String.format(formatString,
+		return String.format(formatString,
 				getBasePath(),
 				getEmailHash());
-
-		return Joiner.on("?").skipNulls().join(new String[] {
-				url,
-				getQueryString()
-		});
 	}
 
 	/**

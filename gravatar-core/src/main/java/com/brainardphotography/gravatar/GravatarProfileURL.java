@@ -22,8 +22,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.brainardphotography.gravatar.GravatarProfileFormat.ContentType;
+import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 
 public class GravatarProfileURL extends GravatarURL {
@@ -39,7 +41,7 @@ public class GravatarProfileURL extends GravatarURL {
 		this.size = Optional.of(new GravatarParameter("s", size.toString()));
 	}
 	
-	public String getAsText(GravatarProfileFormat format) throws IOException {
+	public String getText(GravatarProfileFormat format) throws IOException {
 		if (format.getContentType() == ContentType.BINARY)
 			throw new IllegalArgumentException("'getAsText' doesn't support BINARY content types.");
 
@@ -49,11 +51,22 @@ public class GravatarProfileURL extends GravatarURL {
 			return CharStreams.toString(new InputStreamReader(input));
 		}
 	}
-	
-	public String toString(GravatarProfileFormat format) {
-		return toString() + format.getExtension();
+
+	public byte[] getBytes(GravatarProfileFormat format) throws IOException {
+		URL url = toURL(format);
+
+		try(InputStream input = url.openStream()) {
+			return ByteStreams.toByteArray(input);
+		}
 	}
 	
+	public String toString(GravatarProfileFormat format) {
+		return Joiner.on("?").skipNulls().join(new String[] {
+				getBaseURL() + format.getExtension(),
+				getQueryString()
+		});
+	}
+
 	public URL toURL(GravatarProfileFormat format) {
 		try {
 			return new URL(toString(format));
