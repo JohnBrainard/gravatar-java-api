@@ -7,7 +7,7 @@ URLs. The goal is to implement a complete Java API then add J2EE support.
 Sample Usage
 ------------
 
-_Generate Gravatar Image URL_
+### Generate Gravatar Image URL
 
 	GravatarURL gravatarURL = new GravatarImageURL("test@test.com");
 
@@ -16,7 +16,7 @@ _Generate Gravatar Image URL_
 
 	String toString = gravatarURL.toString();
 
-_Retrieve Image as Byte Array_
+### Retrieve Image as Byte Array
 	
 	try {
 		gravatarURL.getBytes() // Throws IOException
@@ -24,11 +24,12 @@ _Retrieve Image as Byte Array_
 		// Handle exception...
 	}
 
-_Want profile info as native Java Objects?_
+### Want profile info as native Java Objects?
 
 The following example loads the profile JSON and parses it using the
 Gson parser, all of which is transparent to you. You can just as easily
-use `PCContactLoader.getLoader().loadContact(Reader)` to load a 
+use `PCContactLoader.getLoader().loadContact(Reader)` to load from a JSON
+source outside of Gravatar.
 
 	GravatarProfileURL profile = new GravatarProfileURL("test@test.com");
 
