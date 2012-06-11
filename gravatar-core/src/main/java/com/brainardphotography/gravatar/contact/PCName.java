@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2012 John Brainard
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,20 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.brainardphotography.gravatar.contact;
 
-/**
- * 
- * Provides classes to wrap the Gravatar requests.
- * 
- * <p>Refer to <a href="https://en.gravatar.com/site/implement/">Gravatar Developer Resources</a></p>
- * <h2>Sample Usage</h2>
- * 
- * <pre>
- * GravatarImageURL gravatarURL = new GravatarImageURL("test@test.com")
- * 	.setRating(GravatarRating.G, GravatarRating.PG)
- * 	.setDefaultImage(GravatarDefaultImage.MysteryMan);
- * 
- * String url = gravatarURL.toString();
- * </pre>
- */
-package com.brainardphotography.gravatar;
+public class PCName {
+	private String familyName;
+	private String givenName;
+	private String formatted;
+
+	public String getFamilyName() {
+		return familyName;
+	}
+
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+
+	public String getGivenName() {
+		return givenName;
+	}
+
+	public void setGivenName(String givenName) {
+		this.givenName = givenName;
+	}
+
+	public String getFormatted() {
+		return formatted;
+	}
+
+	public void setFormatted(String formatted) {
+		this.formatted = formatted;
+	}
+
+}

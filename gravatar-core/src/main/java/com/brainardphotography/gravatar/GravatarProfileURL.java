@@ -22,6 +22,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.brainardphotography.gravatar.GravatarProfileFormat.ContentType;
+import com.brainardphotography.gravatar.contact.ContactLoader;
+import com.brainardphotography.gravatar.contact.PCContact;
+import com.brainardphotography.gravatar.contact.PCContactLoader;
 import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
@@ -49,6 +52,15 @@ public class GravatarProfileURL extends GravatarURL {
 		
 		try (InputStream input = url.openStream()) {
 			return CharStreams.toString(new InputStreamReader(input));
+		}
+	}
+	
+	public PCContact getContact() throws IOException {
+		URL url = toURL(GravatarProfileFormat.JSON);
+		ContactLoader loader = PCContactLoader.getInstance();
+
+		try (InputStream input = url.openStream()) {
+			return loader.loadContact(new InputStreamReader(input));
 		}
 	}
 

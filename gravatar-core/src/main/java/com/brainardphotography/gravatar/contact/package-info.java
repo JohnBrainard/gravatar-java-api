@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2012 John Brainard
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +14,14 @@
  * limitations under the License.
  */
 
+
 /**
+ * This package provides a loose implementation of the Portable Contact Spec.
  * 
- * Provides classes to wrap the Gravatar requests.
- * 
- * <p>Refer to <a href="https://en.gravatar.com/site/implement/">Gravatar Developer Resources</a></p>
- * <h2>Sample Usage</h2>
- * 
- * <pre>
- * GravatarImageURL gravatarURL = new GravatarImageURL("test@test.com")
- * 	.setRating(GravatarRating.G, GravatarRating.PG)
- * 	.setDefaultImage(GravatarDefaultImage.MysteryMan);
- * 
- * String url = gravatarURL.toString();
- * </pre>
+ * <p>See:</p>
+ * <ul>
+ * <li><a href="http://portablecontacts.net/draft-spec.html">Portable Contacts 1.0 Draft C</a></li>
+ * <li><a href="http://en.gravatar.com/205e460b479e2e5b48aec07710c08d50.json">Gravatar Sample JSON</a></li>
+ * </ul>
  */
-package com.brainardphotography.gravatar;
+package com.brainardphotography.gravatar.contact;

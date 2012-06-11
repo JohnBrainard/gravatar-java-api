@@ -24,6 +24,9 @@ import java.util.logging.Logger;
 
 import org.junit.Test;
 
+import com.brainardphotography.gravatar.contact.PCContact;
+import com.brainardphotography.gravatar.contact.PCEmail;
+
 public class TestGravatarProfileURL {
 	private static final Logger logger = Logger.getLogger(TestGravatarProfileURL.class.getName());
 
@@ -80,6 +83,7 @@ public class TestGravatarProfileURL {
 		String toString = gravatarURL.getText(GravatarProfileFormat.QR_CODE);
 
 		assertNull(toString);
+		logger.log(Level.INFO, "testGetProfileQRCodeAsText: " + url);
 	}
 	
 	@Test
@@ -94,5 +98,18 @@ public class TestGravatarProfileURL {
 		
 		logger.log(Level.INFO, "testGetProfileQRCodeAsBytes: " + url);
 		logger.log(Level.INFO, "testGetProfileQRCodeAsBytes: " + data.length);
+	}
+
+	@Test
+	public void testGetContact() throws IOException {
+		final String email = "beau@dentedreality.com.au";
+		GravatarProfileURL gravatarURL = new GravatarProfileURL(email);
+
+		PCContact contact = gravatarURL.getContact();
+
+		assertNotNull(contact);
+
+		PCEmail pcEmail = contact.getEmails().get(0);
+		assertEquals(email, pcEmail.getValue());
 	}
 }
