@@ -68,6 +68,10 @@ public class GravatarImageURL extends GravatarURL {
 		return this;
 	}
 	
+	public GravatarImageURL setDefaultImage(GravatarDefaultImage defaultImage) {
+		return setDefaultImage(defaultImage.getCode());
+	}
+	
 	/**
 	 * Set a single content rating restriction.
 	 * {@link GravatarRating}

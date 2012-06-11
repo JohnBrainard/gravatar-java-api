@@ -59,7 +59,38 @@ public class TestGravatarImageURL {
 
 		String toString = gravatarURL.toString();
 		assertEquals(expected, toString);
+		
+		logger.log(Level.INFO, "testWithDefaultImageParam: " + toString);
 	}
+
+	@Test
+	public void testWithMysteryManImageParam() {
+		final String hash = getEmailHash("test@test.com");
+		final String expected = "http://www.gravatar.com/avatar/" + hash + "?d=" + GravatarDefaultImage.MysteryMan.getCode();
+
+		GravatarURL gravatarURL = new GravatarImageURL("test@test.com")
+			.setDefaultImage(GravatarDefaultImage.MysteryMan);
+
+		String toString = gravatarURL.toString();
+		assertEquals(expected, toString);
+		
+		logger.log(Level.INFO, "testWithMysteryManImageParam: " + toString);
+	}
+	
+	@Test
+	public void testWithRandomMonsterImageParam() {
+		final String hash = getEmailHash("test@test.com");
+		final String expected = "http://www.gravatar.com/avatar/" + hash + "?d=" + GravatarDefaultImage.RandomMonster.getCode();
+
+		GravatarURL gravatarURL = new GravatarImageURL("test@test.com")
+			.setDefaultImage(GravatarDefaultImage.RandomMonster);
+
+		String toString = gravatarURL.toString();
+		assertEquals(expected, toString);
+		
+		logger.log(Level.INFO, "testWithRandomMonsterImageParam: " + toString);
+	}
+
 
 	@Test
 	public void testWithRatingParam() {
