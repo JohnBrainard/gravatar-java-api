@@ -4,6 +4,15 @@ Gravatar Java API
 The _Gravatar Java API_ is a simple wrapper around the Gravatar image and profile
 URLs. The goal is to implement a complete Java API then add J2EE support.
 
+#### Features
+* Simple Java API access to Gravatar features
+* Supports multiple ratings parameters
+* Native Java object access to Gravatar profile data
+
+#### Planned Features
+* JSP Tags
+* Grails plugin
+
 Sample Usage
 ------------
 
