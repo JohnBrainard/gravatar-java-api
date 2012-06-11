@@ -18,7 +18,7 @@ Sample Usage
 
 ### Generate Gravatar Image URL
 
-	GravatarURL gravatarURL = new GravatarImageURL("test@test.com");
+	GravatarImageURL gravatarURL = new GravatarImageURL("test@test.com");
 
 	gravatarURL.setDefaultImage(GravatarDefaultImage.RandomMonster);
 	gravatarURL.setSize(100);
