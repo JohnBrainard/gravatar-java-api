@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.brainardphotography.gravatar</groupId>
 	<artifactId>gravatar-api</artifactId>
@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<name>Gravatar Java API</name>
 	<description>Gravatar Java API</description>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -17,7 +17,7 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<showDeprecations>true</showDeprecations>
-					<showWarnings>true></showWarnings>
+					<showWarnings>true&gt;</showWarnings>
 					<fork>true</fork>
 				</configuration>
 			</plugin>
@@ -25,5 +25,7 @@
 	</build>
 	<modules>
 		<module>gravatar-core</module>
-	</modules>
+		<module>gravatar-jsp</module>
+    <module>gravatar-jsp-sample</module>
+  </modules>
 </project>

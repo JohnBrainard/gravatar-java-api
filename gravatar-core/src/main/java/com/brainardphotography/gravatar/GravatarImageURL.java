@@ -48,6 +48,22 @@ public class GravatarImageURL extends GravatarURL {
 		super(email);
 	}
 
+	public GravatarImageURL(String email, Integer size, String defaultImage, Boolean forceDefault, EnumSet<GravatarRating> ratings) {
+		this (email);
+		
+		if (size != null)
+			setSize(size);
+		
+		if (defaultImage != null)
+			setDefaultImage(defaultImage);
+		
+		if (forceDefault != null)
+			setForceDefault(forceDefault);
+		
+		if (ratings != null)
+			this.ratings = ratings;
+	}
+
 	public GravatarImageURL setSize(Integer size) {
 		Preconditions.checkNotNull(size, "'size' cannot be null.");
 
@@ -72,6 +88,13 @@ public class GravatarImageURL extends GravatarURL {
 		return setDefaultImage(defaultImage.getCode());
 	}
 	
+	public GravatarImageURL setForceDefault(Boolean forceDefault) {
+		Preconditions.checkNotNull(forceDefault);
+		this.forceDefault = Optional.of(new GravatarParameter("f", forceDefault.toString()));
+
+		return this;
+	}
+
 	/**
 	 * Set a single content rating restriction.
 	 * {@link GravatarRating}

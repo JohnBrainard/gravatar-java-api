@@ -54,7 +54,7 @@ public class GravatarProfileURL extends GravatarURL {
 			return CharStreams.toString(new InputStreamReader(input));
 		}
 	}
-	
+
 	public PCContact getContact() throws IOException {
 		URL url = toURL(GravatarProfileFormat.JSON);
 		ContactLoader loader = PCContactLoader.getInstance();

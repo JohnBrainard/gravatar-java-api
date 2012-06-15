@@ -28,5 +28,12 @@ import java.io.Reader;
  * @author John Brainard
  */
 public interface ContactLoader {
+	
+	/**
+	 * Load a contact from the provided Reader.
+	 * 
+	 * @return New {@link PCContact} instance if found, else <code>null</code>
+	 * @throws IOException Passed through from the Reader.
+	 */
 	public PCContact loadContact(Reader reader) throws IOException;
 }

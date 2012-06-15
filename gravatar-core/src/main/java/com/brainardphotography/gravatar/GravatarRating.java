@@ -15,6 +15,8 @@
  */
 package com.brainardphotography.gravatar;
 
+import com.google.common.base.Preconditions;
+
 public enum GravatarRating {
 	/**
 	 * Suitable for display on all websites with any audience type.
