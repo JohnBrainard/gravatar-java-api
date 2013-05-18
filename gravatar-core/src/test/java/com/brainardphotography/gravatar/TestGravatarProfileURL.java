@@ -106,7 +106,8 @@ public class TestGravatarProfileURL {
 
 		PCContact contact = gravatarURL.getContact();
 
-		assertNotNull(contact);
+		assertNotNull("Expecting non-null contact", contact);
+		assertNotNull("Expecting non-null contact.getEmails()", contact.getEmails());
 
 		PCEmail pcEmail = contact.getEmails().get(0);
 		assertEquals(email, pcEmail.getValue());
