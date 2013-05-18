@@ -61,7 +61,6 @@ public class TestGravatarProfileURL {
 		assertNotNull(toString);
 
 		logger.log(Level.INFO, url);
-		logger.log(Level.INFO, toString);
 	}
 
 	@Test
@@ -102,7 +101,7 @@ public class TestGravatarProfileURL {
 
 	@Test
 	public void testGetContact() throws IOException {
-		final String email = "beau@dentedreality.com.au";
+		final String email = "jfbrainard@gmail.com";
 		GravatarProfileURL gravatarURL = new GravatarProfileURL(email);
 
 		PCContact contact = gravatarURL.getContact();
